@@ -1,7 +1,3 @@
 <?php
 
-$context = Timber::context();
-
-$context['post'] = new Timber\Post();
-
-Timber::render( 'pages/index.twig', $context );
+// Voir le dossier "template-pages"
