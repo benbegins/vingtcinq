@@ -1,0 +1,57 @@
+.section-title {
+	@apply text-dark text-3xl font-display-700 relative pl-6;
+
+	&::before {
+		content: "";
+		@apply absolute block w-2 h-full bg-gold left-0 top-0 rounded-r-md;
+	}
+}
+
+.text-section {
+	ul {
+		@apply list-disc list-outside pl-4;
+
+		li {
+			@apply mt-6;
+		}
+	}
+}
+
+.list-check-square {
+	@apply relative py-3 pr-3 pl-10;
+
+	&::before {
+		content: "";
+		@apply w-5 h-5 absolute left-2 top-3;
+		background: url("/src/images/check-rectangle.svg") center center
+			no-repeat;
+		background-size: contain;
+	}
+}
+
+.list-check {
+	@apply relative pl-6;
+
+	&::before {
+		content: "";
+		@apply absolute w-3 h-full left-0;
+		background: url("/src/images/icon-check.svg") center center no-repeat;
+		background-size: contain;
+	}
+
+	&.cross {
+		&::before {
+			background: url("/src/images/icon-cross.svg") center center
+				no-repeat;
+			background-size: contain;
+		}
+	}
+}
+
+.btn-primary {
+	@apply inline-block font-display-500 uppercase bg-blue-light py-4 px-8 rounded-full;
+
+	&:hover {
+		@apply bg-blue-dark text-white;
+	}
+}

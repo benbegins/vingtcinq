@@ -1,0 +1,70 @@
+<footer class="text-blue-light">
+	<div class="bg-blue-dark">
+		<div class="container">
+			<div class="relative md:grid md:grid-cols-2 lg:grid-cols-4 py-12 lg:py-16">
+				<div class="text-center mb-12 md:col-span-2 lg:mb-0">
+					<div class="lg:mb-10">
+						<a class="uppercase text-4xl font-light font-display-200 hover:text-gold" href="{{site.url}}">Mon Logo</a>
+					</div>
+					<div>
+						<ul class="flex gap-2 justify-center">
+							<li>
+								<a href="" class="bg-dark rounded-full w-10 h-10 flex items-center justify-center"><img src="{{function('get_template_directory_uri')}}/src/images/icon-facebook.svg" alt="Facebook"></a>
+							</li>
+							<li>
+								<a href="" class="bg-dark rounded-full w-10 h-10 flex items-center justify-center"><img src="{{function('get_template_directory_uri')}}/src/images/icon-linkedin.svg" alt="Linkedin"></a>
+							</li>
+							<li>
+								<a href="" class="bg-dark rounded-full w-10 h-10 flex items-center justify-center"><img src="{{function('get_template_directory_uri')}}/src/images/icon-twitter.svg" alt="Twitter"></a>
+							</li>
+							<li>
+								<a href="" class="bg-dark rounded-full w-10 h-10 flex items-center justify-center"><img src="{{function('get_template_directory_uri')}}/src/images/icon-instagram.png" alt="Instagram"></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div>
+					<div>
+						<h3 class="font-display-500 uppercase">Mon organisme de formation</h3>
+						<div class="text-sm grid gap-2 mt-2">
+							<p>70 rue de France</p>
+							<p>01 00 00 00 00 </p>
+							<p>Nous contacter</p>
+						</div>
+					</div>
+					<div>
+						<h3 class="font-display-500 uppercase mt-8">Nos formations</h3>
+						<div class="text-sm">
+							<ul class="grid gap-2 mt-2">
+								<li><a href="">Formation annuelle en Présentiel</a></li>
+								<li><a href="">Formation annuelle en E-learning</a></li>
+								<li><a href="">Formation annuelle en Présentiel</a></li>
+								<li><a href="">Formation annuelle en E-learning</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="mt-8 md:mt-0">
+					<h3 class="font-display-500 uppercase">Plan du site</h3>
+					<ul class="grid gap-2 mt-2">
+						{% for item in menu.items %}
+							<li><a href="{{item.url}}">{{item.title}}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				{# Qualiopi #}
+				<div class="absolute top-0 right-0 w-32 h-32 bg-white shadow-[0px_0px_30px_rgba(14,51,71,0.10)] rounded-full grid place-items-center p-2 -translate-y-1/2">
+					<img src="{{function('get_template_directory_uri')}}/src/images/logo-qualiopi.png" alt="Qualiopi" class="object-fit">
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="bg-dark py-4">
+		<div class="container flex justify-center">
+			<a href="">Mentions légales</a>
+			<span class="block w-px mx-8 bg-blue-light"></span>
+			<a href="">Site réalisé par VingtCinq</a>
+		</div>
+	</div>
+</footer>

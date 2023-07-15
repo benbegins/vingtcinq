@@ -1,0 +1,27 @@
+<header class="site-header fixed w-full top-0 left-0 z-50 bg-blue-dark text-blue-light px-6 py-2">
+	<div class="flex justify-between items-center">
+		<div>
+			<a class="uppercase text-4xl font-light font-display-200 hover:text-gold" href="{{site.url}}">Mon Logo</a>
+		</div>
+		<nav class="hidden xl:block">
+			<ul class="flex gap-6 2xl:gap-12">
+				{% for item in menu.items %}
+					<li>
+						<a class="font-display-500 uppercase tracking-wider text-blue-medium-menu hover:text-gold" href="{{ item.link }}">{{ item.title }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</nav>
+		<div class="hidden xl:flex gap-2 font-display-500">
+			<a href="" class="block uppercase px-8 py-4 border border-white rounded-full hover:bg-blue-medium hover:text-white hover:border-blue-medium">Nous contacter</a>
+			<a href="" class="block uppercase px-8 py-4 rounded-full bg-gradient-to-r from-gold to-[#FFF1D2] text-blue-dark hover:text-white hover:bg-gradient-to-r hover:from-blue-medium hover:to-blue-medium">S'inscrire</a>
+		</div>
+		<div class="xl:hidden">
+			<button>
+				<svg class="w-8 h-8 text-blue-medium-menu" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</button>
+		</div>
+	</div>
+</header>

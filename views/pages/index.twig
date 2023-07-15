@@ -1,0 +1,17 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+	<div class="page-home">
+
+        <section class="">
+            <div class="container bg-blue-500">
+                <h1><strong>Titre : {{post.title}}</strong></h1>
+                <div>
+                    {{post.content}}
+                </div>
+            </div>
+        </section>
+
+	</div>
+
+{% endblock %}

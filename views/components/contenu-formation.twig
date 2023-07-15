@@ -1,0 +1,36 @@
+<div class="mb-6 md:mb-0">
+    <div class="flex items-center pr-4">
+        <div class="w-16 h-16 overflow-hidden rounded-full shrink-0">
+            <img src="{{formation.visuel['sizes']['thumbnail']}}" alt="{{formation.titre}}" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-auto pl-4">
+            {% if formation.continue %}
+                <span class="uppercase text-blue-medium font-display-700 text-xs mb-1">Formation continue</span>
+            {% endif %}
+            <h4 class="text-base font-display-600 text-dark mb-1">{{formation.titre}}</h4>
+        </div>
+    </div>
+    <div class="my-4 pb-4 border-b border-blue-light">
+        <ul>
+            {% for item in formation.contenu['inclus'] %}
+                <li class="list-check text-sm mt-3">
+                    {{item.item}}
+                </li>
+            {%endfor%}
+            {% for item in formation.contenu['non-inclus'] %}
+                <li class="list-check cross text-sm opacity-40 mt-3">
+                    {{item.item}}
+                </li>
+            {%endfor%}
+        </ul>
+    </div>
+    <div class="flex items-center gap-4">
+        <div>
+            <span class="uppercase text-blue-medium font-display-700 text-xs mb-1">À partir de</span><br>
+            <span class="text-3xl font-display-700 leading-tight">{{formation.prix}} €</span>
+        </div>
+        <div>
+            <a href="#formation-{{index}}" class="btn-primary">Découvrir</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<article class="flex bg-white shadow-[0px_0px_30px_0px_rgba(14,51,71,0.10)] rounded-xl p-5">
+    <div class="w-16 h-16 overflow-hidden rounded-full shrink-0">
+        <img src="{{formation.visuel['sizes']['thumbnail']}}" alt="{{formation.titre}}" class="w-full h-full object-cover">
+    </div>
+    <div class="flex-auto pl-4">
+        {% if formation.continue %}
+            <span class="uppercase text-blue-medium font-display-700 text-xs mb-1">Option</span>
+        {% endif %}
+        <h4 class="text-xl font-display-700 text-dark mb-1">{{formation.titre}}</h4>
+        <div>
+            <p class="text-sm">{{formation.presentation}}</p>
+            <a href="#formation-{{index}}" class="btn-primary mt-5">Découvrir</a>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,146 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+	<div class="page">
+
+        {# Hero #}
+        <section class="bg-blue-dark text-white relative overflow-hidden pt-52 pb-12">
+            <div class="container relative z-10">
+                <div>
+                    <h1 class="font-display-700 text-3xl md:text-4xl leading-tight flex items-center">
+                        {{post.title}}
+                        <span class="flex gap-2 text-base uppercase text-gold px-6 py-3 bg-[#003A4D] bg-opacity-60 rounded-full ml-3 font-display-500 tracking-wider">
+                            <img src="{{function('get_template_directory_uri')}}/src/images/icon-e-learning.svg" alt="">
+                            e-learning
+                        </span>
+                    </h1>
+                    <p class="xl:w-1/2 mt-3">{{post.meta('introduction')}}</p>
+                </div>
+            </div>
+            <div class="absolute inset-0 w-full h-full">
+                <img src="{{ post.thumbnail.sizes['2048x2048']['file'] }}"
+                alt="{{post.title}}"
+                srcset="{{ post.thumbnail.srcset }}"
+                sizes="100vw"
+                class="w-full h-full object-cover object-center"
+                />
+                <div class="absolute w-full h-full inset-0 bg-gradient-to-t from-[#003B4F] to-transparent"></div>
+            </div>
+        </section>
+
+
+        {# Nav sections #}
+        <section class="nav-sections bg-blue-light sticky z-10">
+            <div class="container overflow-scroll py-3">
+                <ul class="flex items-center gap-3">
+                    <li class="shrink-0">
+                        <a href="#types" class="nav-link bg-white inline-block px-6 py-4 text-blue-dark font-bold text-sm rounded-lg border border-[#D5E9EF] hover:bg-blue-dark hover:text-white">Types de formations</a>    
+                    </li>
+                    <li class="shrink-0">
+                        <a href="#comparatif" class="nav-link bg-white inline-block px-6 py-4 text-blue-dark font-bold text-sm rounded-lg border border-[#D5E9EF] hover:bg-blue-dark hover:text-white">Comparatif</a>    
+                    </li>
+                    {% for formation in post.meta('formations') %}
+                        <li class="shrink-0">
+                            <a href="#formation-{{loop.index}}" class="nav-link bg-white inline-block px-6 py-4 text-blue-dark font-bold text-sm rounded-lg border border-[#D5E9EF] hover:bg-blue-dark hover:text-white">
+                                {% if formation.continue %}
+                                    Continue - 
+                                {% endif %}
+                                {{ formation.titre }}
+                            </a>    
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+
+        <div class="container py-16 lg:flex lg:justify-between lg:items-start">
+
+            <div class="lg:w-2/3">
+                {# Types de formations #}
+                <section id="types" class="section-scroll">
+                    <div>
+                        <h2 class="section-title">Types de formations</h2>
+                        <div class="mt-6">
+                            {{post.meta('types_de_formations')['intro']}}
+                        </div>
+
+                        <h3 class="mt-12 text-2xl text-blue-medium font-display-600">Formations continues</h3>
+                        <div class="mt-4">
+                            {{post.meta('types_de_formations')['formations_continues']}}
+                            <div class="mt-8 grid gap-5 lg:grid-cols-2">
+                                {% for formation in post.meta('formations') %}
+                                    {% if formation.continue %}
+                                         {% include "/components/card-formation.twig" with {'index': loop.index} %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <h3 class="mt-8 text-2xl text-blue-medium font-display-600">Formation progressive</h3>
+                        <div class="mt-4">
+                            {{post.meta('types_de_formations')['formation_progressive']}}
+                            <div class="mt-8 grid gap-5 lg:grid-cols-2">
+                                {% for formation in post.meta('formations') %}
+                                    {% if not formation.continue %}
+                                        {% include "/components/card-formation.twig" with {'index': loop.index} %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {# Comment choisir sa formation ? #}
+                <section class="pt-28 section-scroll" id="comparatif" >
+                    <h2 class="section-title">Comment choisir sa formation ?</h2>
+                    <div class="mt-6">
+                        {{post.meta('choisir_sa_formation')['introduction']}}
+                    </div>
+                    <div class="mt-6 md:grid md:grid-cols-3">
+                        {% for formation in post.meta('formations') %}
+                            {% include "/components/contenu-formation.twig" with {'index': loop.index} %}
+                        {% endfor %}
+                    </div>
+                </section>
+
+                {# Présentation détaillée des formations #}
+                {% for formation in post.meta('formations') %}
+                <section class="pt-28 section-scroll" id="formation-{{loop.index}}">
+                    <h2 class="section-title">
+                        {% if formation.continue %}
+                            Formation continue - 
+                        {% endif %}
+                        {{formation.titre}}
+                    </h2>
+                    <div class="mt-6 text-section">
+                        {{formation.presentation_detaillee}}
+                    </div>
+                </section>
+                {% endfor %}
+            </div>
+
+
+            {# Pourquoi choisir la formation annuelle #}
+            <aside class="pourquoi-choisir pt-28 lg:pt-0 lg:w-1/3 lg:ml-16 lg:sticky lg:top-0">
+                <div class="bg-blue-light p-6 rounded-xl">
+                    <h2 class="text-xl font-display-700">Pourquoi choisir la formation annuelle ?</h2>
+                    <div class="mt-6">
+                        {{post.meta('pourquoi_choisir')['introduction']}}
+                    </div>
+                    <div class="mt-6">
+                        <ul>
+                            {% for avantage in post.meta('pourquoi_choisir')['avantages'] %}
+                                <li class="list-check-square bg-white rounded-md mt-3 text-sm">{{avantage.avantage}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    
+
+	</div>
+
+{% endblock %}
